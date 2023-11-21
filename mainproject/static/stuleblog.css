@@ -1,11 +1,48 @@
 body {
   margin: 0;
   padding: 0;
+  background-color: #282828;
 
 }
 
 
-.blok{
-    width: 1920px;
+.verhblok{
+    width: 1540px;
     height: 70px;
-    background: #3E3E3E
+    color: white;
+    background: #282828;
+}
+
+.poisk{
+    width: 338px;
+    height: 47px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    background: #3E3E3E;
+    position: relative;
+    left: 370px;
+    top: 11px;
+
+}
+
+.post{
+    width: 180.19px;
+    height: 48px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    background: #3E3E3E;
+    position: relative;
+    left: 774px;
+    top: -36px;
+}
+
+.stat{
+    width: 840px;
+    height: 706.88px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #3E3E3E;
+    position: relative;
+    left: 300px;
+    top: 88px;
+}
