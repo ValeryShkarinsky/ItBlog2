@@ -11,87 +11,6 @@ body {
   src: url('/static/font/Montserrat-Regular.ttf') format('truetype');
 }
 
-.poisk{
-    width: 387px;
-    height: 60px;
-    flex-shrink: 0;
-    border-radius: 8px;
-    background: #4A4141;
-    position: absolute;
-    left: 120px;
-    top: 20px;
-}
-
-
-.textpoisk{
-    font-size: 35px;
-    color: white;
-    position: absolute;
-    left: 10px;
-    top: -28px;
-}
-
-.dobstat{
-    width: 280px;
-    height: 60px;
-    flex-shrink: 0;
-    border-radius: 8px;
-    background: #4A4141;
-    position: absolute;
-    left: 628px;
-    top: 20px;
-}
-
-.textdobstat{
-    font-size: 28px;
-    color: white;
-    position: absolute;
-    left: 10px;
-    top: -18px;
-}
-
-.reg{
-    width: 280px;
-    height: 60px;
-    flex-shrink: 0;
-    border-radius: 8px;
-    background: #4A4141;
-    position: absolute;
-    left: 1035px;
-    top: 20px;
-}
-
-.textreg{
-    font-size: 28px;
-    color: white;
-    position: absolute;
-    left: 20px;
-    top: -15px;
-}
-
-.topstat{
-    position: absolute;
-    left: 250px;
-    top: 105px;
-}
-
-.row{
-    position: absolute;
-    left: 250px;
-    top: 180px;
-}
-
-.row2{
-    position: absolute;
-    left: 350px;
-    top: 0px;
-}
-
-.row3{
-    position: absolute;
-    left: 360px;
-    top: 0px;
-}
 
 .stat{
     width: 1000px;
@@ -116,5 +35,5 @@ body {
     margin: 2% 0% 0% 5%; /* Отступ слева */
     background: #f0f0f0; /* Цвет фона */
     border-radius: 5px; /* Радиус скругления */
-    padding: %; /* Поля */
+    padding:  ь%; /* Поля */
 }

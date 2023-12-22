@@ -5,7 +5,7 @@ from .models import Article
 
 
 def mainblog(request):
-    return render(request, 'blog.html')
+    return render(request, 'article.html')
 
 
 def article(request):

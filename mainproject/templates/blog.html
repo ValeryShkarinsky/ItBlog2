@@ -14,7 +14,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <button type="button" class="btn btn-primary btn-lg" >Регистрация/вход</button>
+    <button  href="{% url 'login' %}" type="button" class="btn btn-primary btn-lg" >Регистрация/вход</button>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -45,59 +45,21 @@
   </div>
 </nav>
 
-<h1 class="topstat">Лучшие стотьи недели</h1>
-
-<div class="row">
-  <div class="col-md-4">
-    <div class="card" style="width: 18rem;">
-      {% for i in article %}
-        <img src="{{ i.img.url }}" class="card-img-top">
-        <div class="card-body">
-          <h5 class="card-title">{{ i.title }}</h5>
-          <p class="card-text">{{ i.anons }}</p>
-          <a href="#" class="btn btn-primary">Перейти куда-нибудь</a>
-        </div>
-      {% endfor %}
-    </div>
-  </div>
-
-<div class="row2">
-    <div class="col-md-4">
-        <div class="card" style="width: 18rem;">
-      {% for i in article %}
-        <img src="{{ i.img.url }}" class="card-img-top">
-        <div class="card-body">
-          <h5 class="card-title">{{ i.title }}</h5>
-          <p class="card-text">{{ i.anons }}</p>
-          <a href="#" class="btn btn-primary">Перейти куда-нибудь</a>
-        </div>
-      {% endfor %}
-  </div>
-</div>
-
-<div class="row3">
-  <div class="col-md-4">
-        <div class="card" style="width: 18rem;">
-      {% for i in article %}
-        <img src="{{ i.img.url }}" class="card-img-top">
-        <div class="card-body">
-          <h5 class="card-title">{{ i.title }}</h5>
-          <p class="card-text">{{ i.anons }}</p>
-          <a href="#" class="btn btn-primary">Перейти куда-нибудь</a>
-        </div>
-      {% endfor %}
+<div>
+<div>
+  {% for i in article %}
+<div class="container-sm">
+<div class="card mb-5">
+  <img src="{{ i.img.url }}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{ i.title }}</h5>
+    <p class="card-text">{{ i.anons }}</p>
+    <p class="card-text"><small class="text-body-secondary">{{ i.date }}</small></p>
+    <button type="button" class="btn btn-primary">Прочитать</button>
   </div>
 </div>
 </div>
+{% endfor %}
 
-<div class="stat">
-    {% for i in article %}
-        <h1 class="nazvstat">{{ i.title }}</h1>
-        <p class="zagolov">{{ i.anons }}</p>
-        <img src="{{ i.img.url }}" class="img">
-        <!--<p class="text">{{ i.ll_text }}</p>-->
-        <!--<p>Дата публикации: {{ i.date }}</p>-->
-    {% endfor %}
-</div>
 </body>
 </html>
