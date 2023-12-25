@@ -45,3 +45,13 @@ body {
     border-radius: 5px; /* Радиус скругления */
     padding:  ь%; /* Поля */
 }
+
+.podval{
+    width: 1519px;
+    height: 200px;
+    background: #C0C0C0;
+    position: absolute;
+    left: -310px;
+    top: 3100px;
+
+}

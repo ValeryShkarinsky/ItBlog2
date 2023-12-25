@@ -14,7 +14,5 @@ def article(request):
 
 class DetalVievs(DetailView):
     model = Article
-    template_name = 'blog.html'
+    template_name = 'Detal.html'
     context_object_name = 'object'
-
-

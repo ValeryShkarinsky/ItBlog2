@@ -1,20 +1,18 @@
+{% load    static %}
 <!doctype html>
 <html lang="en">
-</head>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="{% static 'detal.css' %}">
     <title>Document</title>
-<body>
-<h1></h1>
-{% for i in article %}
-<h1>{{ i.title }}</h1>
-<p>{{ i.anons }}</p>
-<p>{{ i.ll_text }}</p>
-<p>Дата публикации: {{ i.date }}</p>
-{% endfor %}
+</head>
 
+<h1>{{ object.title }}</h1>
+<p>{{ object.anons }}</p>
+<p>{{ object.ll_text }}</p>
+<p>Дата публикации: {{ object.date }}</p>
 </body>
 </html>
