@@ -46,12 +46,20 @@ body {
     padding:  ь%; /* Поля */
 }
 
-.podval{
-    width: 1519px;
-    height: 200px;
-    background: #C0C0C0;
-    position: absolute;
-    left: -310px;
-    top: 3100px;
 
-}
+
+        #footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        #footer a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }

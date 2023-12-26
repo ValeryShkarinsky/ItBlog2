@@ -14,7 +14,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <button  href="{% url 'login' %}" type="button" class="btn btn-primary btn-lg" >Регистрация/вход</button>
+    <a href="{% url 'register'%}"><button  href="{% url 'login' %}" type="button" class="btn btn-primary btn-lg" >Регистрация</button></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -54,15 +54,18 @@
     <h5 class="card-title">{{ i.title }}</h5>
     <p class="card-text">{{ i.anons }}</p>
     <p class="card-text"><small class="text-body-secondary">{{ i.date }}</small></p>
-    <button type="button" class="btn btn-primary"><a href="{% url 'detal' i.id %}">Прочитать</a></button>
+    <a href="{% url 'detal' i.id %}"><button type="button" class="btn btn-primary">Прочитать</button></a>
   </div>
 </div>
 </div>
 {% endfor %}
 
-
-<div class="podval">
-<p>О нас</p>
+<div id="footer">
+     <p>
+         <a href="#">Техподдержка</a>
+         <a href="#">О нас</a>
+         <a href="#">Социальные сети</a>
+     </p>
 </div>
 
 </body>
