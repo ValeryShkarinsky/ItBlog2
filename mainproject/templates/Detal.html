@@ -1,4 +1,4 @@
-{% load    static %}
+{% load static %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -9,20 +9,23 @@
     <link rel="stylesheet" type="text/css" href="{% static 'detal.css' %}">
     <title>Document</title>
 </head>
+<body>
 
-    <div id="footer">
-        <p>
-            <a href="#">Техподдержка</a>
-            <a href="#">О нас</a>
-            <a href="#">Социальные сети</a>
-        </p>
+    <div class="content">
+        <div class="stat">
+            <h1>{{ object.title }}</h1>
+            <p>{{ object.anons }}</p>
+            <p>{{ object.ll_text }}</p>
+            <p>Дата публикации: {{ object.date }}</p>
+        </div>
     </div>
 
-<div class="stat">
-<h1 >{{ object.title }}</h1>
-<p>{{ object.anons }}</p>
-<p>{{ object.ll_text }}</p>
-<p>Дата публикации: {{ object.date }}</p>
+<div id="footer">
+    <p>
+        <a href="#">Техподдержка</a>
+        <a href="#">О нас</a>
+        <a href="#">Социальные сети</a>
+    </p>
 </div>
 
 </body>

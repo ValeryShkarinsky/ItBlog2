@@ -1,21 +1,48 @@
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    min-height: 100vh; /* Установим минимальную высоту body равной 100% высоты видимой области экрана */
+    position: relative; /* Установим позицию как relative для потомков с фиксированным футером */
+}
 
-        #footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 20px;
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-        }
+.content {
+    padding-bottom: 60px; /* Высота футера, чтобы контент не перекрывался */
+}
 
-        #footer a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 10px;
-        }
+.stat {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.stat h1 {
+    color: #333;
+    text-align: center;
+}
+
+.stat p {
+    color: #555;
+    line-height: 1.6;
+    text-align: justify;
+    margin-bottom: 15px;
+}
+
+#footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+#footer a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+}
