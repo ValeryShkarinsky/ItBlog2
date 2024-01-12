@@ -12,7 +12,7 @@ def mainblog(request):
 
 
 def article(request):
-    article = Article.objects.all()
+    article = Article.objects.order_by('-date')
     return render(request, 'blog.html', {'article': article})
 
 class DetalVievs(DetailView):
@@ -26,7 +26,7 @@ def add_article(request):
         form = ArticleForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('article')  # Перенаправление на страницу, где отображаются статьи
+            return redirect('article.html')  # Перенаправление на страницу, где отображаются статьи
     else:
         form = ArticleForm()
 
