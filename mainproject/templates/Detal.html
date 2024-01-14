@@ -18,15 +18,26 @@
             <p>{{ object.ll_text }}</p>
             <p>Дата публикации: {{ object.date }}</p>
         </div>
-    </div>
 
-<div id="footer">
-    <p>
-        <a href="#">Техподдержка</a>
-        <a href="#">О нас</a>
-        <a href="#">Социальные сети</a>
-    </p>
-</div>
+    </div>
+<a href="{% url 'update_article' pk=object.id %}">
+  <button type="button" class="btn btn-primary">Редактировать</button>
+</a>
+
+<a href="{% url 'update_delete' pk=object.id %}">
+  <button type="button" class="btn btn-primary">Удалить статью</button>
+</a>
+
+
+<!--<div id="footer">-->
+<!--    <p>-->
+<!--        <a href="#">Техподдержка</a>-->
+<!--        <a href="#">О нас</a>-->
+<!--        <a href="#">Социальные сети</a>-->
+<!--    </p>-->
+<!--</div>-->
+
+
 
 </body>
 </html>
