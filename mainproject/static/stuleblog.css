@@ -60,3 +60,7 @@ aside ul li:hover, aside ul a:hover{
 .button-container {
     margin-bottom: 10px; /* Расстояние между кнопками */
 }
+
+button{
+        margin-top: 17px;
+}

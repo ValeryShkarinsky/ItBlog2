@@ -35,8 +35,6 @@
 
   </aside>
   <main>
-
-
     <div class="a">
         {% for i in article %}
             <div class="container-sm">
@@ -46,7 +44,7 @@
                         <p class="card-text">{{ i.anons }}</p>
                         <p class="card-text"><small class="text-body-secondary">{{ i.date }}</small></p>
                         <img src="{{ i.img.url }}" class="card-img-top" alt="...">
-                        <a href="{% url 'detal' i.id %}"><button type="button" class="btn btn-primary">Прочитать</button></a>
+                        <a href="{% url 'detal' i.id %}"><button type="button" class="btn btn-primary" class="button">Прочитать</button></a>
                     </div>
                 </div>
             </div>
