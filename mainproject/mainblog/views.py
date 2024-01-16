@@ -27,19 +27,19 @@ class NewsUpdateView(UpdateView):
 
 class NewsDeleteView(DeleteView):
     model = Article
-    success_url = reverse_lazy('/')
+    success_url = reverse_lazy('blog')
     template_name = 'delete.html'
 
 
 def add_article(request):
     if request.method == 'POST':
-        form = ArticleForm(request.POST, request.FILES)
+        form = ArticleForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('blog.html')  # Перенаправление на страницу, где отображаются статьи
+            article = form.save(commit=False)
+            # Дополнительные действия, если нужно
+            article.save()
+            return redirect('blog')  # Редирект, например, на главную страницу
     else:
-        form = ArticleForm()
-
+        form = ArticleForm()  # Замените на вашу форму добавления статьи
     return render(request, 'add_article.html', {'form': form})
-
 
