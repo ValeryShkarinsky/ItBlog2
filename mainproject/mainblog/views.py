@@ -9,6 +9,11 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Article, Comment
 from .forms import CommentForm
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect
+from .forms import ArticleForm
+from .models import Article
+from django.urls import reverse
 
 
 def mainblog(request):
@@ -29,17 +34,17 @@ class NewsUpdateView(UpdateView):
     template_name = 'update.html'
     fields = ['title', 'anons', 'll_text']
 
+    def get_success_url(self):
+        return reverse('detal', kwargs={'pk': self.object.pk})
+
+
+
 class NewsDeleteView(DeleteView):
     model = Article
     success_url = reverse_lazy('stat')
     template_name = 'delete.html'
 
 
-
-from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
-from .forms import ArticleForm
-from .models import Article
 
 
 @login_required(login_url='login')
@@ -61,6 +66,8 @@ def add_article(request):
 
 
 
+
+@login_required(login_url='login')  # 'login' - это имя вашей страницы входа
 def add_comment(request, article_id):
     article = get_object_or_404(Article, pk=article_id)
 
@@ -71,10 +78,20 @@ def add_comment(request, article_id):
             comment.article = article
             comment.user = request.user
             comment.save()
-            return redirect('article_detail', pk=article.id)
+            return redirect('detal', pk=article.id)
+
     else:
         form = CommentForm()
 
     return render(request, 'add_comment.html', {'form': form})
 
+def delete_comment(request, comment_id):
+    comment = get_object_or_404(Comment, pk=comment_id)
+
+    # Проверяем, является ли текущий пользователь автором комментария
+    if comment.user == request.user:
+        comment.delete()
+
+    # После удаления комментария перенаправляем пользователя туда, откуда он пришел
+    return redirect(request.META.get('HTTP_REFERER', 'article_list'))
 

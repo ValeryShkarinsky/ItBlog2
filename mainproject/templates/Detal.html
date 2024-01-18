@@ -1,50 +1,70 @@
 {% load static %}
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{% static 'detal.css' %}">
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <title>Document</title>
+    <title>{{ object.title }}</title>
 </head>
 <body>
 
-    <div class="content">
-        <div class="stat">
-            <p>{{ object.author.username }}</p>
-            <h1>{{ object.title }}</h1>
-            <p>{{ object.anons }}</p>
-            <p>{{ object.ll_text }}</p>
-            <p>Дата публикации: {{ object.date }}</p>
-        </div>
+<div class="content">
+    <div class="stat">
+        <p class="author-info">Автор: {{ object.author.username }}</p>
+        <h1>{{ object.title }}</h1>
+        <p>{{ object.anons }}</p>
+        <p>{{ object.ll_text }}</p>
+        <p>Дата публикации: {{ object.date }}</p>
+
+        {% if object.author == request.user %}
+            <!-- Только автор может видеть кнопки редактирования и удаления -->
+            <div class="author-buttons">
+                <a href="{% url 'update_article' pk=object.id %}">
+                    <button class="btn btn-success" type="submit">Редактировать</button>
+                </a>
+
+                <a href="{% url 'update_delete' pk=object.id %}">
+                    <button class="btn btn-success" type="submit">Удалить статью</button>
+                </a>
+            </div>
+        {% endif %}
     </div>
-<a href="{% url 'update_article' pk=object.id %}">
-  <button type="button" class="btn btn-primary">Редактировать</button>
-</a>
 
-<a href="{% url 'update_delete' pk=object.id %}">
-  <button type="button" class="btn btn-primary">Удалить статью</button>
-</a>
+    <h2>{{ article.title }}</h2>
+    <p>{{ article.ll_text }}</p>
 
+    <div class="add-comment-form">
+        <h3 class="commtx">Добавить комментарий</h3>
 
-  <h2>{{ article.title }}</h2>
-  <p>{{ article.ll_text }}</p>
+        {% if user.is_authenticated %}
+            <form method="post" action="{% url 'add_comment' object.id %}">
+                {% csrf_token %}
+                <textarea name="text" rows="4" placeholder="Введите ваш комментарий" required></textarea><br>
+                <button type="submit">Добавить комментарий</button>
+            </form>
+        {% else %}
+            <p>Чтобы добавить комментарий, пожалуйста, <a class="register-link" href="{% url 'register' %}">зарегистрируйтесь</a>.</p>
+        {% endif %}
+    </div>
 
-<h3>Комментарии</h3>
-{% for comment in object.comments.all %}
-    <p>{{ comment.user.username }} - {{ comment.created_date }}</p>
-    <p>{{ comment.text }}</p>
-{% endfor %}
-
-<h3>Добавить комментарий</h3>
-<a href="{% url 'add_comment' object.id %}">Добавить комментарий</a>
-
-
-
-
-
+    <div class="comments-section">
+        <h3 class="commtx">Комментарии</h3>
+        {% for comment in object.comments.all %}
+            <div class="comment">
+                <p>{{ comment.user.username }} - {{ comment.created_date }}</p>
+                <p>{{ comment.text }}</p>
+                {% if comment.user == request.user %}
+                    <a href="{% url 'delete_comment' comment.id %}">Удалить комментарий</a>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</div>
 
 </body>
 </html>

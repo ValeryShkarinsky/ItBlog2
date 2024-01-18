@@ -1,7 +1,15 @@
 from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
-
+from django.db import models
+from django.contrib.auth.models import User
+from django.urls import reverse
+from django.db import models
+from django.contrib.auth.models import User
+from django.urls import reverse
+from django.db import models
+from django.contrib.auth.models import User
+from django.urls import reverse
 
 class Article(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Автор', editable=False)
@@ -19,8 +27,8 @@ class Comment(models.Model):
     text = models.TextField('Текст комментария')
     created_date = models.DateTimeField('Дата создания', auto_now_add=True)
 
-    def __str__(self):
-        return self.title
+    def str(self):
+        return f'{self.user.username} - {self.created_date}'
 
     def get_absolute_url(self):
         return reverse('detal', args=[str(self.id)])
@@ -28,8 +36,5 @@ class Comment(models.Model):
     def __str__(self):
         return f'{self.user.username} - {self.created_date}'
 
-    def save(self, *args, **kwargs):
-        if not self.id:
-            # Статья создается впервые, установите автора
-            self.author = User.objects.get(pk=self.request.user.id)
-        super().save(*args, **kwargs)
+    def __str__(self):
+        return f'{self.user.username} - {self.created_date}'
