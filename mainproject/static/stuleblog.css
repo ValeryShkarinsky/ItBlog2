@@ -61,6 +61,12 @@ aside ul li:hover, aside ul a:hover{
     margin-bottom: 10px; /* Расстояние между кнопками */
 }
 
+.navbar {
+    background: #181818;
+
+}
+
 button{
         margin-top: 17px;
 }
+

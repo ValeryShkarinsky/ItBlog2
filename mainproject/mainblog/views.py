@@ -5,6 +5,10 @@ from django.shortcuts import render, redirect
 from .models import Article
 from .forms import ArticleForm
 from .models import Article
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, get_object_or_404, redirect
+from .models import Article, Comment
+from .forms import CommentForm
 
 
 def mainblog(request):
@@ -27,19 +31,50 @@ class NewsUpdateView(UpdateView):
 
 class NewsDeleteView(DeleteView):
     model = Article
-    success_url = reverse_lazy('blog')
+    success_url = reverse_lazy('stat')
     template_name = 'delete.html'
 
 
+
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect
+from .forms import ArticleForm
+from .models import Article
+
+
+@login_required(login_url='login')
 def add_article(request):
     if request.method == 'POST':
-        form = ArticleForm(request.POST)
+        form = ArticleForm(request.POST, request.FILES)
         if form.is_valid():
             article = form.save(commit=False)
-            # Дополнительные действия, если нужно
+            article.author = request.user
             article.save()
-            return redirect('blog')  # Редирект, например, на главную страницу
+            return redirect('stat')
     else:
-        form = ArticleForm()  # Замените на вашу форму добавления статьи
+        form = ArticleForm()
+
     return render(request, 'add_article.html', {'form': form})
+
+
+# views.py
+
+
+
+def add_comment(request, article_id):
+    article = get_object_or_404(Article, pk=article_id)
+
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.article = article
+            comment.user = request.user
+            comment.save()
+            return redirect('article_detail', pk=article.id)
+    else:
+        form = CommentForm()
+
+    return render(request, 'add_comment.html', {'form': form})
+
 

@@ -13,12 +13,12 @@
 
     <div class="content">
         <div class="stat">
+            <p>{{ object.author.username }}</p>
             <h1>{{ object.title }}</h1>
             <p>{{ object.anons }}</p>
             <p>{{ object.ll_text }}</p>
             <p>Дата публикации: {{ object.date }}</p>
         </div>
-
     </div>
 <a href="{% url 'update_article' pk=object.id %}">
   <button type="button" class="btn btn-primary">Редактировать</button>
@@ -29,13 +29,20 @@
 </a>
 
 
-<!--<div id="footer">-->
-<!--    <p>-->
-<!--        <a href="#">Техподдержка</a>-->
-<!--        <a href="#">О нас</a>-->
-<!--        <a href="#">Социальные сети</a>-->
-<!--    </p>-->
-<!--</div>-->
+  <h2>{{ article.title }}</h2>
+  <p>{{ article.ll_text }}</p>
+
+<h3>Комментарии</h3>
+{% for comment in object.comments.all %}
+    <p>{{ comment.user.username }} - {{ comment.created_date }}</p>
+    <p>{{ comment.text }}</p>
+{% endfor %}
+
+<h3>Добавить комментарий</h3>
+<a href="{% url 'add_comment' object.id %}">Добавить комментарий</a>
+
+
+
 
 
 
