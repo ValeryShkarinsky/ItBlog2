@@ -7,14 +7,20 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="{% static 'detal.css' %}">
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
 <body>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <h2>Добавить статью</h2>
-        {{ form.as_p }}
-        <button type="submit">Удалить статью</button>
-    </form>
+<form method="post" enctype="multipart/form-data" style="max-width: 500px; margin: 0 auto; color: #ffffff; text-align: center; position: absolute; top: 45%; left: 50%; transform: translate(-50%, -50%);">
+    {% csrf_token %}
+    <h2 style="color: #ffffff;">Вы уверены, что хотите удалить эту статью?</h2>
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-danger">да</button>
+    <a href="{% url 'detal' pk=object.id %}" class="btn btn-success">нет</a>
+</form>
+
+
 </body>
 </html>

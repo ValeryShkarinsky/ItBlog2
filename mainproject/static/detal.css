@@ -5,20 +5,98 @@ body {
     background-color: #2c2c2c !important;  /* Добавьте !important, чтобы переопределить стили Bootstrap */
 }
 
+aside{
+    position: fixed;
+    float: left;
+    background: #181818;
+    wight: 25%;
+    padding: 2.5%;
+    height: 100vh;
+    color: #fff;
+    border-right: 5px solid #4d4d4d;
+}
+
+.logo{
+    font-size: 40px;
+    margin-left: 10px;
+    font-weight: bold;
+
+
+}
+
+aside h3{
+    margin-top: 30px;
+    font-size: 25px;
+}
+
+aside ul{
+    list-style: none
+}
+
+aside ul li{
+    color: #fff;
+    display: block;
+    margin-top: 17px;
+    transition: all .6s ease;
+    margin-left: -14px;
+
+}
+
+aside ul li:hover, aside ul a:hover{
+    color: #198754;
+    text-decoration: none;
+    transform: scale(1.05);
+}
+
+.a{
+    background-color: #181818; /* Цвет фона */
+    color: #ffffff; /* Цвет текста */
+    width: 900px;
+    height: 700px;
+    position: absolute;
+    left: 430px;
+    top: 75px;
+
+    }
+
+.button-container {
+    margin-bottom: 10px; /* Расстояние между кнопками */
+}
+
+
+button{
+        margin-top: 17px;
+}
+
+
 .content {
     max-width: 800px;
     margin: 0 auto;
 }
 
+.content{
 
+}
 
 .stat {
-    background-color: #181818;
+    background-color: #fff;
     padding: 20px;
     border-radius: 8px;
     margin-bottom: 20px;
-    color: #fff;
-    text-align: center; /* Добавлено для центрирования текста */
+    position: relative; /* Добавлено для позиционирования элементов внутри */
+    color: #222;
+}
+
+.author-info {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.date-info {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
 }
 
 .commtx{
@@ -26,7 +104,7 @@ body {
 }
 
 .stat h1 {
-    color: #fff;
+    color: #222;
     text-align: center; /* Добавлено для центрирования текста */
 }
 
@@ -41,10 +119,11 @@ body {
 
 .comments-section {
     margin-top: 20px;
+    margin-right: 20px;
 }
 
 .comment {
-    background-color: #e9ecef;
+    background-color: #fff;
     border-radius: 8px;
     padding: 10px;
     margin-bottom: 10px;
@@ -78,3 +157,20 @@ body {
 .register-link {
     color: #007bff;
 }
+
+.author-buttons {
+    margin-top: 20px;
+}
+
+.btn-group {
+    display: flex;
+}
+
+.btn-group a {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.btn-custom {
+    text-decoration: none;
+    display: inline-block;

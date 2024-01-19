@@ -95,3 +95,8 @@ def delete_comment(request, comment_id):
     # После удаления комментария перенаправляем пользователя туда, откуда он пришел
     return redirect(request.META.get('HTTP_REFERER', 'article_list'))
 
+def about(request):
+    return render(request, 'about.html')
+
+def contact(request):
+    return render(request, 'contact.html')
